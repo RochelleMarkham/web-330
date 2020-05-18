@@ -1,0 +1,49 @@
+<!---
+==============================================
+; Title: Exercise 4.3
+; Author: Professor Krasso
+; Date: May 17 2020
+; Modified by: Rochelle Markham
+; Description: HTTP PUT and DELETE Operations
+==============================================
+--->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Exercise 4.3</title>
+        <!-- jQuery reference -->
+        <script
+            type="text/javascript"
+            src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+            charset="UTF-8">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <!---displays above button--->
+        <h4>HTTP DELETE</h4>
+        <button id="remove">Click here to Delete</button>
+        <script>
+            //when the button is clicked the function sends a request to the specified site to delete
+            //the data supplied and then print a message showing what was deleted and whether the 
+            //request was successful or not
+            $("#remove").click(function() {
+                $.ajax({
+                    url: "http://httpbin.org/delete",
+                    dataType: "json",
+                    type: "DELETE",
+                    data: {firstName: "Rochelle", middleName: "Leanne", lastName: "Markham"},
+                    success: function(data, status) {
+                        console.log("First Name: " + data.form.firstName +
+                            "\nMiddle Name: " + data.form.middleName +
+                            "\nLast Name: " + data.form.lastName +
+                            "\nStatus: " + status
+                        );
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
