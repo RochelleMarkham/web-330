@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Exercise 5.2 - The Proxy Pattern</title>
+
+        <!--Bootstrap-->        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- jquery Reference Library -->
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    <body>
+        <!--navigation-->
+        <nav class="navbar navbar-dark bg-danger">
+            <a href="#" class="navbar-brand">Home</a>
+        </nav>
+        <br/><br/>
+        <div class="container">
+            <div class="col-md-12">
+                <h2>Markham Exercise 5.2: The Proxy Pattern</h2>
+                <button class="btn btn-danger" id="btnExample1">Run test</button>
+                <br/><span id="proxyExampleOne"></span>
+                <hr/>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                var pet = {
+                    scientific_name: "Python regius",
+                    common_name: "Ball Python",
+                    display: function(){
+                        $("#proxyExampleOne").html("");
+                        $("#proxyExampleOne").append(
+                            "<br/>Scientific Name: " + this.scientific_name + "<br/>" + "Common Name: " + this.common_name);
+                    }
+                };
+                $("#btnExample1").click($.proxy(pet, "display"));
+            });
+        </script>
+    </body>
+</html>
